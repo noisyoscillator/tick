@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+
 import numpy as np
 from tick.linear_model import ModelLogReg ,SimuLogReg
 from tick.simulation import weights_sparse_gauss
@@ -29,4 +31,7 @@ sgd.solve(x0, step=500.)
 svrg = SVRG(**solver_params).set_model(model).set_prox(prox)
 svrg.solve(x0, step=1 / model.get_lip_max())
 
-plot_history([gd, agd, sgd, svrg], log_scale=True, dist_min=True)
+plot_history([gd, agd, sgd, svrg], log_scale=True, dist_min=True, show=False)
+
+plt.ylim([1e-10, 10])
+plt.show()
